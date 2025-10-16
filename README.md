@@ -3,13 +3,13 @@
 OtoPazar - Sahibinden, kullanıcıların araç ilanları oluşturabileceği, yönetebileceği ve görüntüleyebileceği modern bir web uygulamasıdır. Tamamen responsive tasarımı ve kullanıcı dostu arayüzüyle öne çıkan bu proje, front-end web teknolojilerinin etkili bir şekilde kullanıldığı örnek bir çalışmadır.
 
 Kullanılan Teknolojiler:
-HTML5 (İngilizce)
+●HTML5 (İngilizce)
 
-CSS
+●CSS
 
-JavaScript
+●JavaScript
 
-Bootstrap 5
+●Bootstrap 5
 
 Özellikleri:
 ✅ Dinamik İlan Yönetimi - Araç ekleme, listeleme ve silme
