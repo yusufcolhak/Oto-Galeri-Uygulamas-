@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>OtoPazar - Sahibinden</title>
+    <style>
+        body {
+            background-color: black ;
+            color: black ;
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            background-color: yellow;
+            color: black;
+            border-radius: 10px;
+            box-shadow: 0 0 20px black;
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .card {
+          background-color: yellow;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        
+        .card-header {
+            background: yellow ;
+            color: black ;
+            font-weight: bold;
+            font-size: 24px;
+            text-align: center;
+            border-radius: 10px 10px 0 0 ;
+            padding: 15px;
+        }
+        
+        .btn-danger {
+            background: black ;
+            color: yellow;
+            border: none;
+            font-weight: bold;
+            padding: 10px 20px;
+        }
+        
+        .btn-dark {
+            background: black ;
+            color: yellow;
+            border: none;
+            font-weight: bold;
+            padding: 10px 20px;
+        }
+        
+        .table-dark {
+            background: black;
+            color: white ;
+        }
+        
+        .form-control {
+            border: 2px solid black;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        
+        .form-control:focus {
+            border-color: yellow;
+            box-shadow: 0 0 5px yellow;
+        }
+        
+        .img-thumbnail {
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+        
+        .alert {
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        h5.card-title {
+            color: black ;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .navbar-custom {
+            background: yellow;
+            color: black;
+            border-radius: 0 0 10px 10px;
+        }
+        
+        .brand-text {
+            color: black;
+            font-weight: bold;
+            font-size: 28px;
+        }
+        
+        .footer {
+            background: yellow;
+            color: black;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-custom">
+        <div class="container">
+            <span class="navbar-brand brand-text">🚗 OtoPazar - Sahibinden</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card row">
+            <div class="card-header">Araç Ekleme Formu</div>
+            <div class="card-body">
+                <form id="car-form" name="form">
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <input class="form-control" type="text" name="title" id="title" placeholder="Araç Marka & Model (Örn: Ford Focus)">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input class="form-control" type="text" name="price" id="price" placeholder="Fiyat (Örn: 450.000 TL)">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input class="form-control" type="text" name="url" id="url" placeholder="Araç Görseli Linki">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-danger btn-block">
+                        <i class="fa fa-car"></i> Aracı İlanlara Ekle
+                    </button>
+                </form>
+                <hr>
+            </div>
+            
+            <div class="card-body">
+                <h5 class="card-title" id="cars-title">
+                    <i class="fa fa-list"></i> Mevcut Araç İlanları
+                </h5>
+                <hr>
+                
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Araç Görseli</th>
+                                <th scope="col">Araç Bilgisi</th>
+                                <th scope="col">Fiyat Bilgisi</th>
+                                <th scope="col">İşlem</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cars">
+                            <!-- Araçlar buraya eklenecek -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <hr>  
+                <div class="text-center">
+                    <a id="clear-cars" class="btn btn-dark" href="#">
+                        <i class="fa fa-trash"></i> Tüm İlanları Temizle
+                    </a>               
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <p> OtoPazarı - Sahibinden | Güvenli Alışverişin Adresi</p>
+            <p>© 2025 Tüm hakları saklıdır.</p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <script>
+        // Car Constructor
+        function Car(title, price, url) {
+            this.title = title;
+            this.price = price;
+            this.url = url;
+        }
+
+        // UI Objesi
+        function UI() {}
+
+        // Arayüze yeni araç ekleme
+        UI.prototype.addCarToUI = function(newCar) {
+            const carList = document.getElementById("cars");
+
+            carList.innerHTML += `
+                <tr>
+                    <td>
+                        <img src="${newCar.url}" 
+                             class="img-fluid img-thumbnail" 
+                             style="max-width: 120px; height: 80px; object-fit: cover;"
+                             onerror="this.src='https://via.placeholder.com/120x80/FFD700/000000?text=Araç+Görseli'"
+                             alt="${newCar.title}">
+                    </td>
+                    <td style="vertical-align: middle; font-weight: bold;">${newCar.title}</td>
+                    <td style="vertical-align: middle; color: #FFD700; font-weight: bold; font-size: 18px;">${newCar.price}</td>
+                    <td style="vertical-align: middle;">
+                        <a href="#" id="delete-car" class="btn btn-danger btn-sm">
+                            <i class="fa fa-trash"></i> Sil
+                        </a>
+                    </td>
+                </tr>
+            `;
+        }
+
+        // Inputları temizleme
+        UI.prototype.clearInputs = function() {
+            document.getElementById("title").value = "";
+            document.getElementById("price").value = "";
+            document.getElementById("url").value = "";
+        }
+
+        // Mesaj gösterme
+        UI.prototype.displayMessages = function(message, type) {
+            const cardBody = document.querySelector(".card-body");
+
+            // Alert div oluşturma
+            const div = document.createElement("div");
+            div.className = `alert alert-${type}`;
+            div.textContent = message;
+            div.style.fontWeight = 'bold';
+
+            // Alert'i ekleme
+            cardBody.insertBefore(div, cardBody.firstElementChild);
+
+            // 2 saniye sonra alert'i kaldırma
+            setTimeout(function() {
+                div.remove();
+            }, 3000);
+        }
+
+        // Storage'dan tüm araçları arayüze yükleme
+        UI.prototype.loadAllCars = function(cars) {
+            const carList = document.getElementById("cars");
+            
+            carList.innerHTML = ""; // Önce temizle
+            
+            if (cars.length === 0) {
+                carList.innerHTML = `
+                    <tr>
+                        <td colspan="4" class="text-center" style="color: #FFD700; font-weight: bold; font-size: 18px;">
+                            <i class="fa fa-info-circle"></i> Henüz hiç araç ilanı eklenmemiş.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            cars.forEach(function(car) {
+                carList.innerHTML += `
+                    <tr>
+                        <td>
+                            <img src="${car.url}" 
+                                 class="img-fluid img-thumbnail" 
+                                 style="max-width: 120px; height: 80px; object-fit: cover;"
+                                 onerror="this.src='https://via.placeholder.com/120x80/FFD700/000000?text=Araç+Görseli'"
+                                 alt="${car.title}">
+                        </td>
+                        <td style="vertical-align: middle; font-weight: bold;">${car.title}</td>
+                        <td style="vertical-align: middle; color: #FFD700; font-weight: bold; font-size: 18px;">${car.price}</td>
+                        <td style="vertical-align: middle;">
+                            <a href="#" id="delete-car" class="btn btn-danger btn-sm">
+                                <i class="fa fa-trash"></i> Sil
+                            </a>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        // Arayüzden araç silme
+        UI.prototype.deleteCarFromUI = function(element) {
+            element.parentElement.parentElement.remove();
+        }
+
+        // Arayüzden tüm araçları temizleme
+        UI.prototype.clearAllCarsFromUI = function() {
+            const carList = document.getElementById("cars");
+            carList.innerHTML = `
+                <tr>
+                    <td colspan="4" class="text-center" style="color: #FFD700; font-weight: bold; font-size: 18px;">
+                        <i class="fa fa-info-circle"></i> Henüz hiç araç ilanı eklenmemiş.
+                    </td>
+                </tr>
+            `;
+        }
+
+        // Storage Objesi
+        function Storage() {}
+
+        // Storage'a araç ekleme
+        Storage.prototype.addCarToStorage = function(newCar) {
+            let cars = this.getCarsFromStorage();
+            cars.push(newCar);
+            localStorage.setItem("cars", JSON.stringify(cars));
+        }
+
+        // Storage'dan araçları alma
+        Storage.prototype.getCarsFromStorage = function() {
+            let cars;
+            if (localStorage.getItem("cars") === null) {
+                cars = [];
+            } else {
+                cars = JSON.parse(localStorage.getItem("cars"));
+            }
+            return cars;
+        }
+
+        // Storage'dan araç silme
+        Storage.prototype.deleteCarFromStorage = function(carTitle) {
+            let cars = this.getCarsFromStorage();
+            cars.forEach(function(car, index) {
+                if (car.title === carTitle) {
+                    cars.splice(index, 1);
+                }
+            });
+            localStorage.setItem("cars", JSON.stringify(cars));
+        }
+
+        // Storage'dan tüm araçları temizleme
+        Storage.prototype.clearAllCarsFromStorage = function() {
+            localStorage.removeItem("cars");
+        }
+
+        // UI Objesini Başlatma
+        const ui = new UI();
+
+        // Storage Objesini Başlatma
+        const storage = new Storage();
+
+        // Tüm eventleri yükleme
+        eventListeners();
+
+        function eventListeners() {
+            const carForm = document.getElementById("car-form");
+            const carsCardBody = document.querySelector(".card-body");
+            const clearButton = document.getElementById("clear-cars");
+
+            // Araç ekleme eventi
+            carForm.addEventListener("submit", addCar);
+
+            // Sayfa yüklendiğinde araçları getirme
+            document.addEventListener("DOMContentLoaded", function() {
+                let cars = storage.getCarsFromStorage();
+                ui.loadAllCars(cars);
+            });
+
+            // Araç silme eventi
+            carsCardBody.addEventListener("click", deleteCar);
+
+            // Tüm araçları temizleme eventi
+            clearButton.addEventListener("click", clearAllCars);
+        }
+
+        function addCar(e) {
+            const title = document.getElementById("title").value;
+            const price = document.getElementById("price").value;
+            const url = document.getElementById("url").value;
+
+            if (title === "" || price === "" || url === "") {
+                // Hata mesajı
+                ui.displayMessages("❌ Lütfen tüm alanları doldurun!", "danger");
+            } else {
+                // Yeni araç
+                const newCar = new Car(title, price, url);
+
+                // Arayüze araç ekleme
+                ui.addCarToUI(newCar);
+
+                // Storage'a araç ekleme
+                storage.addCarToStorage(newCar);
+
+                // Başarı mesajı
+                ui.displayMessages("✅ Araç başarıyla ilanlara eklendi!", "success");
+
+                // Inputları temizleme
+                ui.clearInputs();
+            }
+
+            e.preventDefault();
+        }
+
+        function deleteCar(e) {
+            if (e.target.id === "delete-car" || e.target.parentElement.id === "delete-car") {
+                const deleteButton = e.target.id === "delete-car" ? e.target : e.target.parentElement;
+                const carTitle = deleteButton.parentElement.parentElement.children[1].textContent;
+                
+                ui.deleteCarFromUI(deleteButton.parentElement.parentElement);
+                storage.deleteCarFromStorage(carTitle);
+                ui.displayMessages("✅ İlan başarıyla silindi!", "success");
+                
+                // Listeyi yeniden yükle
+                let cars = storage.getCarsFromStorage();
+                ui.loadAllCars(cars);
+            }
+        }
+
+        function clearAllCars() {
+            if (confirm("⚠️ Tüm araç ilanları silinecek. Emin misiniz?")) {
+                ui.clearAllCarsFromUI();
+                storage.clearAllCarsFromStorage();
+                ui.displayMessages("✅ Tüm ilanlar temizlendi!", "success");
+            }
+        }
+    </script>
+</body>
+</html>
