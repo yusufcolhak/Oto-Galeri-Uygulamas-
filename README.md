@@ -1,1 +1,1 @@
-# Oto-Galeri-Uygulamas-
+# Oto-Galeri-Uygulaması-
